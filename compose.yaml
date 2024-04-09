@@ -7,9 +7,9 @@ services:
     ports:
       - "${PORT_OUT_APP}:${PORT_IN_APP}"
     environment:
-      REDMINE_DB_MYSQL=${MARIADB_DATABASE}
-      REDMINE_DB_USERNAME=${MARIADB_USER}
-      REDMINE_DB_PASSWORD=${MARIADB_PASSWORD}
+      REDMINE_DB_MYSQL=${MYSQL_DATABASE}
+      REDMINE_DB_USERNAME=${MYSQL_USER}
+      REDMINE_DB_PASSWORD=${MYSQL_PASSWORD}
       REDMINE_SECRET_KEY_BASE=supersecretkey
       TZ=${TZ}
     restart: unless-stopped
