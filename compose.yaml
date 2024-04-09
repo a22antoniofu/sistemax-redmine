@@ -15,8 +15,6 @@ services:
     restart: unless-stopped
     depends_on:
       - db
-    networks:
-      - ${PROJECT_NAME}
 
   db:
     container_name: ${PROJECT_NAME}-db
@@ -31,10 +29,3 @@ services:
       MYSQL_PASSWORD: password
       TZ: ${TZ}
     restart: unless-stopped
-    networks:
-      - ${PROJECT_NAME}
-
-networks:
-  ${PROJECT_NAME}:
-    driver: bridge
-
