@@ -11,7 +11,7 @@ services:
       REDMINE_DB_USERNAME: ${MARIADB_USER}
       REDMINE_DB_PASSWORD: ${MARIADB_PASSWORD}
       REDMINE_SECRET_KEY_BASE: supersecretkey
-      - TZ=${TZ}
+      TZ=${TZ}
     restart: unless-stopped
     depends_on:
       - db
@@ -25,11 +25,11 @@ services:
     ports:
       - "${PORT_OUT_DB}:${PORT_IN_DB}"
     environment:
-      MYSQL_ROOT_PASSWORD: $_{MARIADB_ROOT_PASSWORD}
-      MYSQL_DATABASE: redmine
-      MYSQL_USER: redmine
-      MYSQL_PASSWORD: password
-      - TZ=${TZ}
+      MYSQL_ROOT_PASSWORD=$_{MARIADB_ROOT_PASSWORD}
+      MYSQL_DATABASE=redmine
+      MYSQL_USER=redmine
+      MYSQL_PASSWORD=password
+      TZ=${TZ}
     restart: unless-stopped
     networks:
       - ${PROJECT_NAME}
