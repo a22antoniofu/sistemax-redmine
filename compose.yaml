@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+  redmine:
+    container_name: ${PROJECT_NAME}-redmine
+    hostname: ${PROJECT_NAME}-redmine
+    image: redmine:3.4.6
+    ports:
+      - '${PORT_OUT_APP}:${PORT_IN_APP}'
+    environment:
+      REDMINE_DB_MYSQL: $_{MARIADB_DATABASE}
+      REDMINE_DB_USERNAME: $_{MARIADB_USER}
+      REDMINE_DB_PASSWORD: $_{MARIADB_PASSWORD}
+      REDMINE_SECRET_KEY_BASE: supersecretkey
+      - TZ=${TZ}
+    restart: unless-stopped
+    depends_on:
+      - db
+    networks:
+      - ${PROJECT_NAME}
+
+  db:
+    container_name: ${PROJECT_NAME}-db
+    hostname: ${PROJECT_NAME}-db
+    image: $_{IMAGE_DB}:_{IMAGE_VERSION_DB}
+    ports:
+      - "${PORT_OUT_DB}:${PORT_IN_DB}"
+    environment:
+      MYSQL_ROOT_PASSWORD: $_{MARIADB_ROOT_PASSWORD}
+      MYSQL_DATABASE: redmine
+      MYSQL_USER: redmine
+      MYSQL_PASSWORD: password
+      - TZ=${TZ}
+    restart: unless-stopped
+    networks:
+      - ${PROJECT_NAME}
