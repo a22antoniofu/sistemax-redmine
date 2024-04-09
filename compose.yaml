@@ -22,6 +22,8 @@ services:
     image: ${IMAGE_DB}:${IMAGE_VERSION_DB}
     ports:
       - "${PORT_OUT_DB}:${PORT_IN_DB}"
+    VOLUMES:
+      - ${VOLUME_DB}:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: $_{MARIADB_ROOT_PASSWORD}
       MYSQL_DATABASE: redmine
