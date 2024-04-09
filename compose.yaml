@@ -5,7 +5,7 @@ services:
     hostname: ${PROJECT_NAME}-redmine
     image: redmine:3.4.6
     ports:
-      - '${PORT_OUT_APP}:${PORT_IN_APP}'
+      - "${PORT_OUT_APP}:${PORT_IN_APP}""
     environment:
       REDMINE_DB_MYSQL: ${MARIADB_DATABASE}
       REDMINE_DB_USERNAME: ${MARIADB_USER}
@@ -38,4 +38,3 @@ networks:
   ${PROJECT_NAME}:
     driver: bridge
 
-    
