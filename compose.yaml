@@ -7,8 +7,7 @@ services:
     ports:
       - "${PORT_OUT_APP}:${PORT_IN_APP}"
     environment:
-      REDMINE_DB_MYSQL: ${MYSQL_DB}
-      
+      REDMINE_DB_MYSQL: ${project_name}-db
       REDMINE_DB_USERNAME: ${MYSQL_USER}
       REDMINE_DB_PASSWORD: ${MYSQL_PASSWORD}
       REDMINE_SECRET_KEY_BASE: supersecretkey
