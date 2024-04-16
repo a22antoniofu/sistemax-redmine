@@ -1,10 +1,10 @@
 services:
   redmine:
-    container_name: ${PROJECT_NAME}-redmine
-    hostname: ${PROJECT_NAME}-redmine
-    image: ${IMAGE_APP}:${IMAGE_VERSION_APP}
+    container_name: ${PROJECT_NAME}-apache
+    hostname: ${PROJECT_NAME}-apache
+    image: a22antoniofu/apache
     ports:
-      - "${PORT_OUT_APP}:${PORT_IN_APP}"
+      - "80:80"
     environment:
       REDMINE_DB_MYSQL: ${PROJECT_NAME}-db
       REDMINE_DB_USERNAME: ${MYSQL_USER}
